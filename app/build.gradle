@@ -10,13 +10,13 @@ def scheme = properties.getProperty("scheme")
 def url = properties.getProperty("url")
 def jumpWherePath = properties.getProperty("jumpWherePath")
 if(userAgent==null){
-    userAgent="Android"
+    userAgent="\"Android\""
 }
 if(path==null){
-    path=""
+    path="\"\""
 }
 if(scheme==null){
-    scheme="Mozilla/5.0 (Linux; Android 11; Pixel 4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Mobile Safari/537.36"
+    scheme="\"Mozilla/5.0 (Linux; Android 11; Pixel 4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Mobile Safari/537.36\""
 }
 if(url==null){
     url="\"https://www.baidu.com\""
@@ -45,18 +45,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "com.peakmain.pkwebview.config.Config", "config",
                     " new com.peakmain.pkwebview.config.Config($userAgent,${path},$scheme,$url)"
-            buildConfigField "String", "path", path
-            buildConfigField "String", "scheme", scheme
-            buildConfigField "String", "jumpWherePath", jumpWherePath
+            buildConfigField "String", "path", "${path}"
+            buildConfigField "String", "scheme", "${scheme}"
+            buildConfigField "String", "jumpWherePath", "\"${jumpWherePath}\""
         }
         debug {
             minifyEnabled false
 
             buildConfigField "com.peakmain.pkwebview.config.Config", "config",
                     " new com.peakmain.pkwebview.config.Config($userAgent,${path},$scheme,$url)"
-            buildConfigField "String", "path", path
-            buildConfigField "String", "scheme", scheme
-            buildConfigField "String", "jumpWherePath", jumpWherePath
+            buildConfigField "String", "path", "${path}"
+            buildConfigField "String", "scheme", "${scheme}"
+            buildConfigField "String", "jumpWherePath", "\"${jumpWherePath}\""
         }
     }
     compileOptions {
